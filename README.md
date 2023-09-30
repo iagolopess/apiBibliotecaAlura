@@ -82,14 +82,14 @@ Start the API server with the command npm start.
 Access the API at http://localhost:3000 in your browser or use tools like Postman to perform CRUD operations.
 
 ## List of Dependencies
-npm install express (to install Node Express)
-npm install nodemon@3.0.1 (to install the specified version of Nodemon 3.0.1 used in the project)
-npm install mongodb (to enable the connection to MongoDB)
-npm install mongoose@7.3.4 (to install the necessary dependencies for MongoDB connection)
+- npm install express (to install Node Express)
+- npm install nodemon@3.0.1 (to install the specified version of Nodemon 3.0.1 used in the project)
+- npm install mongodb (to enable the connection to MongoDB)
+- npm install mongoose@7.3.4 (to install the necessary dependencies for MongoDB connection)
 
 ## API Endpoints
-GET /livros: Returns the list of all books available in the library.
-GET /livros/{id}: Returns the details of a specific book based on the ID.
-POST /livros: Adds a new book to the library.
-PUT /livros/{id}: Updates the details of an existing book based on the ID.
-DELETE /livros/{id}: Removes a book from the library based on the ID.
+- GET /livros: Returns the list of all books available in the library.
+- GET /livros/{id}: Returns the details of a specific book based on the ID.
+- POST /livros: Adds a new book to the library.
+- PUT /livros/{id}: Updates the details of an existing book based on the ID.
+- DELETE /livros/{id}: Removes a book from the library based on the ID.
