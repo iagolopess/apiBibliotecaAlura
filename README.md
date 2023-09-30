@@ -25,7 +25,7 @@ Atualização de Livros: Atualize as informações de um livro existente, inclui
 
 Exclusão de Livros: Remova livros da livraria quando necessário.
 
-Pré-requisitos
+## Pré-requisitos
 Certifique-se de ter os seguintes requisitos instalados em seu ambiente de desenvolvimento:
 
 Node.js: Necessário para executar o servidor da API.
@@ -38,10 +38,10 @@ Inicie o servidor da API com o comando npm start.
 
 Acesse a API em http://localhost:3000 no seu navegador ou usando ferramentas como Postman para realizar as operações CRUD.
 
-Endpoints da API
-GET /livros: Retorna a lista de todos os livros disponíveis na livraria.
-GET /livros/:id: Retorna os detalhes de um livro específico com base no ID.
-POST /livros: Adiciona um novo livro à livraria.
-PUT /livros/:id: Atualiza os detalhes de um livro existente com base no ID.
-DELETE /livros/:id: Remove um livro da livraria com base no ID.
+## Endpoints da API
+- GET /livros: Retorna a lista de todos os livros disponíveis na livraria.
+- GET /livros/:id: Retorna os detalhes de um livro específico com base no ID.
+- POST /livros: Adiciona um novo livro à livraria.
+- PUT /livros/:id: Atualiza os detalhes de um livro existente com base no ID.
+- DELETE /livros/:id: Remove um livro da livraria com base no ID.
 
