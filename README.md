@@ -39,9 +39,9 @@ Inicie o servidor da API com o comando npm start.
 Acesse a API em http://localhost:3000 no seu navegador ou usando ferramentas como Postman para realizar as operações CRUD.
 
 ## Endpoints da API
-- GET /livros: Retorna a lista de todos os livros disponíveis na livraria.
-- GET /livros/:id: Retorna os detalhes de um livro específico com base no ID.
-- POST /livros: Adiciona um novo livro à livraria.
-- PUT /livros/:id: Atualiza os detalhes de um livro existente com base no ID.
-- DELETE /livros/:id: Remove um livro da livraria com base no ID.
+- GET /livros Retorna a lista de todos os livros disponíveis na livraria.
+- GET /livros/{id} Retorna os detalhes de um livro específico com base no ID.
+- POST /livros Adiciona um novo livro à livraria.
+- PUT /livros/{id} Atualiza os detalhes de um livro existente com base no ID.
+- DELETE /livros/{id} Remove um livro da livraria com base no ID.
 
