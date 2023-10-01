@@ -4,12 +4,10 @@
  */
 import mongoose from "mongoose";
 
-
 /**
  * Função assíncrona para estabelecer uma conexão com o banco de dados.
  * @returns {mongoose.Connection} Uma instância da conexão com o banco de dados.
  */
-
 async function connectDataBase(){
     // Conecta-se ao banco de dados usando a string de conexão fornecida em process.env.DB_CONNECTION_STRING.
     mongoose.connect(process.env.DB_CONNECTION_STRING);
