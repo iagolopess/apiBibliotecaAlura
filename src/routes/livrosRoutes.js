@@ -12,9 +12,11 @@ const routes = express.Router();
  * Quando um cliente faz uma solicitação GET para "/livros", o método "listarLivros" do controlador LivroController é chamado.
  */
 routes.get("/livros", LivroController.listarLivros);
+routes.get("/livros/busca", LivroController.listarLivrosPorEditora);
 routes.get("/livros/:id", LivroController.listarLivroPorId);
 routes.post("/livros", LivroController.cadastrarLivro);
 routes.put("/livros/:id", LivroController.atualizarLivroPorId);
 routes.delete("/livros/:id", LivroController.excluirLivroPorId);
+
 
 export default routes;

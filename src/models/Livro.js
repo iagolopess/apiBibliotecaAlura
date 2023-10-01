@@ -4,6 +4,7 @@
  */
 
 import mongoose from "mongoose";
+import { autorSchema } from "./Autor.js";
 
 // Define o schema para os documentos de livros
 const livroSchema = new mongoose.Schema({
@@ -11,7 +12,8 @@ const livroSchema = new mongoose.Schema({
     titulo: { type: String, required: true },
     editora: { type: String, required: true },
     preco: { type: Number },
-    paginas: { type: Number }
+    paginas: { type: Number },
+    autor: autorSchema
 
 },
     { versionKey: false } // Desativa a criação automática do campo "__v" no documento
