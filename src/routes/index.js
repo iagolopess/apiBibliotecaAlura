@@ -11,7 +11,7 @@ import autores from "./autoresRoutes.js";
  * @param {express.Application} app - A instância do aplicativo Express.
  */
 const routes = (app) => {
-    app.route('/').get((req, res) => res.status(200).send("Curso de NodeJs"));
+    app.route("/").get((req, res) => res.status(200).send("Curso de NodeJs"));
     // Usa o middleware express.json() para tratar solicitações com formato JSON.
     // Define as rotas relacionadas a livros usando o módulo "livrosRoutes".
     app.use(express.json(), livros, autores);

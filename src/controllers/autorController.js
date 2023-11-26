@@ -6,37 +6,44 @@ import { autor } from "../models/Autor.js";
 
 class AutorController {
     
-     /**
+    /**
      * Lista todos os livros.
      * @param {express.Request} req - O objeto de requisição HTTP.
      * @param {express.Response} res - O objeto de resposta HTTP.
      */
-    static async listarAutores(req, res){
+    static listarAutores = async (req, res, next) => {
         
-
         try {
             // Busca todos os livros no banco de dados.
             const listaAutores = await autor.find({});
-            res.status(200).json(listaAutores);
+            if (listaAutores != null ) {
+                res.status(200).json(listaAutores);
+            } else {
+                res.status(404).send({message: "Não foi possível encontrar os registros de autores"});
+            }
+            
         } catch (erro) {
-            res.status(500).json({
-                message: `${erro.message} - Falha na requisição`,
-            })
+            next(erro);
         }
 
     };
 
 
-    static async listarAutorPorId(req, res){
+    static  listarAutorPorId = async (req, res, next) => {
         
         try {
             const id = req.params.id;
+
             const autorEncontrado = await autor.findById(id);
-            res.status(200).json(autorEncontrado);
+            
+            if (autorEncontrado != null) {
+                res.status(200).send(autorEncontrado);
+            } else {
+                res.status(404).send({message: "Id do Autor não localizado."});
+            }
+            
         } catch (erro) {
-            res.status(500).json({
-                message: `${erro.message} - Falha na requisição do autor`,
-            })
+            next(erro);
         }
 
     };
@@ -47,53 +54,55 @@ class AutorController {
      * @param {express.Request} req - O objeto de requisição HTTP contendo os dados do livro a ser cadastrado.
      * @param {express.Response} res - O objeto de resposta HTTP.
      */
-    static async cadastrarAutor(req, res){
+    static cadastrarAutor = async (req, res, next) => {
         
         try {
-            const novoAutor = await autor.create(req.body);
-            res.status(201).json({
-                message: "Autor Criado com sucesso",
-                livro: novoAutor
-            });    
+
+            let autor = new autor(req.body);
+
+            const novoAutor = await autor.save();
+            res.status(201).json(novoAutor.toJSON());
+
         } catch (erro) {
-            res.status(500).json({
-                message: `${erro.message} - Falha ao cadastrar Autor`
-            })
-        }
 
-    }
-
-    static async atualizarAutorPorId(req, res){
+            next(erro);
         
-        try {
-            const id = req.params.id;
-            await autor.findByIdAndUpdate(id, req.body);
-            res.status(200).json({
-                message: `Autor Atualizado`
-            });
-        } catch (erro) {
-            res.status(500).json({
-                message: `${erro.message} - Falha na atualização do autor`,
-            })
         }
 
     };
 
-    static async excluirAutorPorId(req, res){
+    static atualizarAutorPorId = async (req, res, next) => {
+        
+        try {
+            const id = req.params.id;
+
+            await autor.findByIdAndUpdate(id, {$set: req.body});
+            
+            res.status(200).json({
+                message: "Autor Atualizado"
+            });
+
+        } catch (erro) {
+            
+            next(erro);
+        
+        }
+
+    };
+
+    static async excluirAutorPorId(req, res, next){
         
         try {
             const id = req.params.id;
             await autor.findByIdAndDelete(id);
             res.status(200).json({
-                message: `Autor excluido com sucesso`
+                message: "Autor excluido com sucesso"
             });
         } catch (erro) {
-            res.status(500).json({
-                message: `${erro.message} - Falha ao excluir o autor`,
-            })
+            next(erro);
         }
 
-    };
+    }
 
 }
 

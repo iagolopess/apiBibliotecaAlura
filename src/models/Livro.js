@@ -16,7 +16,7 @@ const livroSchema = new mongoose.Schema({
     autor: autorSchema
 
 },
-    { versionKey: false } // Desativa a criação automática do campo "__v" no documento
+{ versionKey: false } // Desativa a criação automática do campo "__v" no documento
 );
 
 // Cria um modelo "livro" associado ao schema definido acima

@@ -6,6 +6,8 @@
 import express from "express";
 import connectDataBase from "./config/dbConnect.js";
 import routes from "./routes/index.js";
+import manipuladorDeErros from "./middlewares/manipuladorDeErros.js";
+
 
 
 // Realiza a conexão com o banco de dados usando a função connectDataBase.
@@ -14,15 +16,18 @@ const conexao = await connectDataBase();
 // Configura um manipulador de evento para erros de conexão com o banco de dados.
 conexao.on("error", (erro) => {
     console.error("erro de conexao", erro);
-})
+});
 
 // Configura um manipulador de evento para quando a conexão com o banco de dados for aberta com sucesso.
 conexao.once("open", () => {
-    console.log("Conexao com o DB feita com sucesso!")
-})
+    console.log("Conexao com o DB feita com sucesso!");
+});
 
 const app = express(); // Cria uma instância do aplicativo Express.
 routes(app); // Define as rotas do aplicativo express
+
+// eslint-disable-next-line no-unused-vars
+app.use(manipuladorDeErros);
 
 export default app;
 
