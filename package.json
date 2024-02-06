@@ -1,5 +1,5 @@
 {
-  "name": "nodejs",
+  "name": "alura-node",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,14 +11,13 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "dotenv": "^16.3.1",
-    "express": "^4.18.1",
-    "mongodb": "^6.3.0",
-    "mongoose": "^7.3.4",
-    "nodemon": "^3.0.1"
-  },
   "devDependencies": {
-    "eslint": "^8.54.0"
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.17.3",
+    "mongodb": "^6.3.0",
+    "mongoose": "^6.12.6"
   }
 }

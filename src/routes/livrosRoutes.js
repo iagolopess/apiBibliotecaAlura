@@ -1,22 +1,14 @@
-/**
- * Rotas de Livros
- * Este módulo define as rotas relacionadas a livros na aplicação Express, utilizando o controlador LivroController.
- */
-import express  from "express";
-import LivroController from "../controllers/livroController.js";
+import express from "express";
+import LivroController from "../controllers/livrosController.js";
 
-const routes = express.Router();
+const router = express.Router();
 
-/**
- * Rota para listar todos os livros.
- * Quando um cliente faz uma solicitação GET para "/livros", o método "listarLivros" do controlador LivroController é chamado.
- */
-routes.get("/livros", LivroController.listarLivros);
-routes.get("/livros/busca", LivroController.listarLivrosPorEditora);
-routes.get("/livros/:id", LivroController.listarLivroPorId);
-routes.post("/livros", LivroController.cadastrarLivro);
-routes.put("/livros/:id", LivroController.atualizarLivroPorId);
-routes.delete("/livros/:id", LivroController.excluirLivroPorId);
+router
+  .get("/livros", LivroController.listarLivros)
+  .get("/livros/busca", LivroController.listarLivroPorEditora)
+  .get("/livros/:id", LivroController.listarLivroPorId)
+  .post("/livros", LivroController.cadastrarLivro)
+  .put("/livros/:id", LivroController.atualizarLivro)
+  .delete("/livros/:id", LivroController.excluirLivro)
 
-
-export default routes;
+export default router;   

@@ -1,33 +1,14 @@
-/**
- * Configuração do Aplicativo Express
- * Este módulo configura o aplicativo Express, conecta-o ao banco de dados e define rotas.
- */
-
 import express from "express";
-import connectDataBase from "./config/dbConnect.js";
-import routes from "./routes/index.js";
-import manipuladorDeErros from "./middlewares/manipuladorDeErros.js";
+import db from "./config/dbConnect.js"
+import routes from "./routes/index.js"
 
+db.on("error", console.log.bind(console, 'Erro de conexão'))
+db.once("open", () => {
+  console.log('conexão com o banco feita com sucesso')
+})
 
+const app = express();
+app.use(express.json())
+routes(app);
 
-// Realiza a conexão com o banco de dados usando a função connectDataBase.
-const conexao = await connectDataBase();
-
-// Configura um manipulador de evento para erros de conexão com o banco de dados.
-conexao.on("error", (erro) => {
-    console.error("erro de conexao", erro);
-});
-
-// Configura um manipulador de evento para quando a conexão com o banco de dados for aberta com sucesso.
-conexao.once("open", () => {
-    console.log("Conexao com o DB feita com sucesso!");
-});
-
-const app = express(); // Cria uma instância do aplicativo Express.
-routes(app); // Define as rotas do aplicativo express
-
-// eslint-disable-next-line no-unused-vars
-app.use(manipuladorDeErros);
-
-export default app;
-
+export default app
