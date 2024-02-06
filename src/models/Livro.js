@@ -9,8 +9,8 @@ import { autorSchema } from "./Autor.js";
 // Define o schema para os documentos de livros
 const livroSchema = new mongoose.Schema({
     id: { type: mongoose.Schema.Types.ObjectId },
-    titulo: { type: String, required: true },
-    editora: { type: String, required: true },
+    titulo: { type: String, required: [true, "Titulo é obrigatório"] },
+    editora: { type: String, required: [true, "Editora é obrigatório"] },
     preco: { type: Number },
     paginas: { type: Number },
     autor: autorSchema

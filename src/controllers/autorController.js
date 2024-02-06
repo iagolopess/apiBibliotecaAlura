@@ -58,10 +58,8 @@ class AutorController {
         
         try {
 
-            let autor = new autor(req.body);
-
-            const novoAutor = await autor.save();
-            res.status(201).json(novoAutor.toJSON());
+            const novoAutor = await autor.create(req.body);
+            res.status(201).json(novoAutor);
 
         } catch (erro) {
 
